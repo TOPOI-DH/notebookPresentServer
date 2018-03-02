@@ -1,5 +1,4 @@
-Jupyter Notebook Presentation Server
-------------------------------------
+# Jupyter Notebook Presentation Server
 
 Publications are based on Jupyter Docker images, 
 with additional packages as requiered by the publication. 
@@ -7,8 +6,8 @@ with additional packages as requiered by the publication.
 Users can choose the desired Docker stack to spawn their server. 
 
 Access is open, idle servers are automatically culled.
->>>>>>> 95faa40755300108ed61abda2a9b34b257550133
 
+---
 
 **[Technical Overview](#technical-overview)** |
 **[Prerequisites](#prerequisites)** |
