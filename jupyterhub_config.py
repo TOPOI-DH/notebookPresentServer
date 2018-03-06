@@ -23,7 +23,7 @@ class DemoFormSpawner(DockerSpawner):
         inserted_list = ('\n\t'.join(['<option value="' + image + '">' + image + '</option>' for image in listJupyter]))
         default_stack = "jupyter/minimal-notebook"
         return """
-        <label for="stack">Select your desired stack</label>
+        <label for="stack">Select your image stack</label>
         <select name="stack" size="1">
         %s
         </select>
