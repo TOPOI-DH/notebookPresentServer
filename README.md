@@ -3,7 +3,9 @@
 Publications are based on Jupyter Docker images, 
 with additional packages as requiered by the publication. 
 
-Users can choose the desired Docker stack to spawn their server. 
+Users can choose the desired Docker stack to spawn their server. The list of possible images is rebuild automatically.
+Every image tagged as eoa\NAME becomes part of the list. Images have to be build and tagged on the server. Consider adding 
+an additional registry server to handle larger numbers of images.
 
 Access is open, idle servers are automatically culled.
 
