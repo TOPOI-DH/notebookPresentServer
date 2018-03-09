@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook:latest
+FROM jupyter/base-notebook
 
 # based on examples from binder and jupyter showcase
 MAINTAINER Malte Vogl <malte.vogl@hu-berlin.de>
@@ -19,11 +19,11 @@ RUN pip3 install cltk textblob lxml
 
 USER root
 
-COPY data /home/jovyan
+#COPY data /home/jovyan
 
 RUN chown -R jovyan:users /home/jovyan
 
-COPY jupyter_notebook_config.py /home/jovyan/.jupyter
+#COPY jupyter_notebook_config.py /home/jovyan/.jupyter
 
 RUN mkdir /home/jovyan/.jupyter/custom
 
