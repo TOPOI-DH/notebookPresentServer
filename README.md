@@ -1,13 +1,17 @@
 # Jupyter Notebook Presentation Server
 
-Publications are based on Jupyter Docker images, 
-with additional packages as requiered by the publication. 
+For an example deploy check [here](https://notebooks.mpiwg-berlin.mpg.de).
+
+Publications are based on Jupyter Docker images in the [notebookImages](https://gitlab.gwdg.de/EditionOpenAccess/notebookImages) repro,
+with additional packages as required by the publication.
 
 Users can choose the desired Docker stack to spawn their server. The list of possible images is rebuild automatically.
-Every image tagged as eoa\NAME becomes part of the list. Images have to be build and tagged on the server. Consider adding 
-an additional registry server to handle larger numbers of images.
 
-Access is open, idle servers are automatically culled.
+Every image tagged as eoa/NAME becomes part of the list. Images have to be build and tagged on the server. Consider adding an additional registry server to handle larger numbers of images.
+
+Access is open, idle servers are automatically culled. All changes that a user makes
+in the notebook are lost after restart. Notebooks can downloaded locally or copied
+into the JupyterHub Workspace to continue work.
 
 ---
 
@@ -36,9 +40,9 @@ Possible **use cases** include:
 
 ## Disclaimer
 
-This deployment is **NOT** intended for a production environment. 
-It is a reference implementation that does not meet traditional 
-requirements in terms of availability nor scalability. 
+This deployment is **NOT** intended for a production environment.
+It is a reference implementation that does not meet traditional
+requirements in terms of availability nor scalability.
 
 If you are looking for a more robust solution to host JupyterHub, or
 you require scaling beyond a single host, please check out the
