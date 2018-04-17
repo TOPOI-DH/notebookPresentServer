@@ -21,7 +21,7 @@ class DemoFormSpawner(DockerSpawner):
                 parse = parseImg.findall(str(image))
                 listJupyter.extend(parse)
         inserted_list = ('\n\t'.join(['<option value="' + image + '">' + image + '</option>' for image in listJupyter]))
-        default_stack = "jupyter/minimal-notebook"
+        default_stack = "eoa/webcrawl"
         return """
         <label for="stack">Select your image stack</label>
         <select name="stack" size="1">
@@ -82,7 +82,7 @@ c.DockerSpawner.remove_containers = True
 c.DockerSpawner.debug = True
 
 c.DockerSpawner.mem_limit = '2G'
-c.DockerSpawner.cpu_limit = 1
+c.DockerSpawner.cpu_limit = 2
 
 # User containers will access hub by container name on the Docker network
 c.JupyterHub.hub_ip = 'jupyterhub'
