@@ -35,7 +35,7 @@ class DemoFormSpawner(DockerSpawner):
         options['stack'] = formdata['stack']
         container_image = ''.join(formdata['stack'])
         print("SPAWN: " + container_image + " IMAGE" )
-        self.container_image = container_image
+        self.image = container_image
         return options
 
 
