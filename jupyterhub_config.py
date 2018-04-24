@@ -23,7 +23,7 @@ class DemoFormSpawner(DockerSpawner):
         inserted_list = ('\n\t'.join(['<option value="' + image + '">' + image + '</option>' for image in listJupyter]))
         default_stack = "eoa/webcrawl"
         return """
-        <label for="stack">Select your image stack</label>
+        <label for="stack">Select your publication</label>
         <select name="stack" size="1">
         %s
         </select>
@@ -68,6 +68,8 @@ c.DockerSpawner.network_name = network_name
 # We follow the same convention.
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
 c.DockerSpawner.notebook_dir = notebook_dir
+c.DockerSpawner.args = ['--NotebookApp.default_url=/home/jovyan/data/index.ipynb']
+
 # Mount the real user's Docker volume on the host to the notebook user's
 # notebook directory in the container
 c.DockerSpawner.volumes = { 'jupyterhub-user-data': notebook_dir }
