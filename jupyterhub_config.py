@@ -72,7 +72,7 @@ c.DockerSpawner.args = ['--NotebookApp.default_url=/home/jovyan/data/index.ipynb
 
 # Mount the real user's Docker volume on the host to the notebook user's
 # notebook directory in the container
-c.DockerSpawner.volumes = { 'jupyterhub-user-data': notebook_dir }
+#c.DockerSpawner.volumes = { 'jupyterhub-user-data': notebook_dir }
 #c.DockerSpawner.extra_create_kwargs.update({ 'volume_driver': 'local' })
 c.DockerSpawner.extra_host_config = {
         'network_mode': network_name,
