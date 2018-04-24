@@ -54,7 +54,7 @@ c.DockerSpawner.image = os.environ['DOCKER_NOTEBOOK_IMAGE']
 # jupyter/docker-stacks *-notebook images as the Docker run command when
 # spawning containers.  Optionally, you can override the Docker run command
 # using the DOCKER_SPAWN_CMD environment variable.
-spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', "start.sh jupyter notebook index.ipynb")
+spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', "start.sh jupyter notebook ~/work/index.ipynb")
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
 # Connect containers to this Docker network
 network_name = os.environ['DOCKER_NETWORK_NAME']
@@ -68,7 +68,7 @@ c.DockerSpawner.network_name = network_name
 # We follow the same convention.
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
 c.DockerSpawner.notebook_dir = notebook_dir
-c.DockerSpawner.args = ['--NotebookApp.default_url=/home/jovyan/data/index.ipynb']
+#c.DockerSpawner.args = ['--NotebookApp.default_url=/home/jovyan/data/index.ipynb']
 
 # Mount the real user's Docker volume on the host to the notebook user's
 # notebook directory in the container
