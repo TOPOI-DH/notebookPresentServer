@@ -21,9 +21,9 @@ class DemoFormSpawner(DockerSpawner):
                 parse = parseImg.findall(str(image))
                 listJupyter.extend(parse)
         inserted_list = ('\n\t'.join(['<option value="' + image + '">' + image + '</option>' for image in listJupyter]))
-        default_stack = "jupyter/minimal-notebook"
+        default_stack = "eoa/webcrawl"
         return """
-        <label for="stack">Select your image stack</label>
+        <label for="stack">Select your publication</label>
         <select name="stack" size="1">
         %s
         </select>
@@ -35,7 +35,7 @@ class DemoFormSpawner(DockerSpawner):
         options['stack'] = formdata['stack']
         container_image = ''.join(formdata['stack'])
         print("SPAWN: " + container_image + " IMAGE" )
-        self.container_image = container_image
+        self.image = container_image
         return options
 
 
@@ -54,7 +54,7 @@ c.DockerSpawner.image = os.environ['DOCKER_NOTEBOOK_IMAGE']
 # jupyter/docker-stacks *-notebook images as the Docker run command when
 # spawning containers.  Optionally, you can override the Docker run command
 # using the DOCKER_SPAWN_CMD environment variable.
-spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', "start-singleuser.sh")
+spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', "start.sh jupyter notebook ~/work/index.ipynb")
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
 # Connect containers to this Docker network
 network_name = os.environ['DOCKER_NETWORK_NAME']
@@ -68,9 +68,11 @@ c.DockerSpawner.network_name = network_name
 # We follow the same convention.
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
 c.DockerSpawner.notebook_dir = notebook_dir
+#c.DockerSpawner.args = ['--NotebookApp.default_url=/home/jovyan/data/index.ipynb']
+
 # Mount the real user's Docker volume on the host to the notebook user's
 # notebook directory in the container
-c.DockerSpawner.volumes = { 'jupyterhub-user-data': notebook_dir }
+#c.DockerSpawner.volumes = { 'jupyterhub-user-data': notebook_dir }
 #c.DockerSpawner.extra_create_kwargs.update({ 'volume_driver': 'local' })
 c.DockerSpawner.extra_host_config = {
         'network_mode': network_name,
@@ -82,7 +84,7 @@ c.DockerSpawner.remove_containers = True
 c.DockerSpawner.debug = True
 
 c.DockerSpawner.mem_limit = '2G'
-c.DockerSpawner.cpu_limit = 1
+c.DockerSpawner.cpu_limit = 2
 
 # User containers will access hub by container name on the Docker network
 c.JupyterHub.hub_ip = 'jupyterhub'
