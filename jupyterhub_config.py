@@ -54,7 +54,7 @@ c.DockerSpawner.image = os.environ['DOCKER_NOTEBOOK_IMAGE']
 # jupyter/docker-stacks *-notebook images as the Docker run command when
 # spawning containers.  Optionally, you can override the Docker run command
 # using the DOCKER_SPAWN_CMD environment variable.
-spawn_cmd = os.environ.get("start.sh jupyter notebook ~/work/index.ipynb")
+spawn_cmd = os.environ.get("/usr/local/bin/start.sh jupyterhub-singleuser ~/work/index.ipynb")
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
 # Connect containers to this Docker network
 network_name = os.environ['DOCKER_NETWORK_NAME']
